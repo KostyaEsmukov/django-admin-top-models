@@ -42,8 +42,17 @@ class SuperuserMixin(object):
     def setUp(self):
         super(SuperuserMixin, self).setUp()
 
-        self.superuser = User.objects.create_superuser(username='super', password='secret', email='super@example.com')
-        self.client.force_login(self.superuser)
+        self.superuser_password = 'secret'
+        self.superuser = User.objects.create_superuser(username='super', password=self.superuser_password, email='super@example.com')
+        try:
+            self.client.force_login(self.superuser)
+        except AttributeError:
+            # force_login is introduced in Django 1.9
+            # https://docs.djangoproject.com/en/1.9/topics/testing/tools/#django.test.Client.force_login
+            self.assertTrue(self.client.login(
+                username=self.superuser.username,
+                password=self.superuser_password
+            ))
 
 
 class MiddlewareWithSuperuserTests(AssertIsSubsetMixin, SuperuserMixin, BaseMiddlewareTests):
