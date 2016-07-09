@@ -3,6 +3,7 @@ from functools import cmp_to_key
 from django.utils.functional import cached_property
 from django.core.urlresolvers import resolve
 
+from admin_top_models.utils import list_get_or_default
 from . import settings
 
 
@@ -78,11 +79,12 @@ class AdminTopModelsMiddleware(object):
 
     @cached_property
     def config_apps_indexes_dict(self):
-        return {app_label: idx for idx, (app_label, _) in enumerate(settings.CONFIG)}
+        return {app_label__models[0]: idx for idx, app_label__models in enumerate(settings.CONFIG)}
 
     @cached_property
     def config_app_to_models_indexesdict(self):
-        return {app_label: ({model: idx for idx, model in enumerate(models)}) for app_label, models in settings.CONFIG}
+        return {app_label__models[0]: ({model: idx for idx, model in enumerate(list_get_or_default(app_label__models, 1, tuple()))})
+                for app_label__models in settings.CONFIG}
 
     @classmethod
     def cmp_top(cls, keyA, keyB, commonIndexesDict):
