@@ -41,9 +41,9 @@ install:
 
  - if [[ $DJANGO_VERSION == dev ]]; then pip
    install https://github.com/django/django/tarball/master/django.tar.gz#egg=django; else pip
-   install -q Django==$DJANGO_VERSION --use-mirrors; fi
+   install -q Django==$DJANGO_VERSION; fi
 
- - pip install -r requirements-test.txt --use-mirrors
+ - pip install -r requirements-test.txt
 
  - python setup.py develop
 
