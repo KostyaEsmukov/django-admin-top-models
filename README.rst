@@ -29,7 +29,7 @@ Put most used and important models to the top of your Django admin index.
 .. image:: https://cloud.githubusercontent.com/assets/2418596/16707176/8b4f1a28-45ce-11e6-991a-01e17d7d5ba8.png
 
 INSTALL
-~~~~~~~
+-------
 
 ::
 
@@ -37,7 +37,7 @@ INSTALL
 
 
 Configuration
-~~~~~~~~~~~~~
+-------------
 
 
 1. Add ``admin_top_models`` to ``INSTALLED_APPS``::
