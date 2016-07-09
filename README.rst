@@ -3,23 +3,23 @@ django-admin-top-models
 =======================
 
 
-.. image:: https://img.shields.io/pypi/dm/django-admin-top-models.svg
+.. image:: https://img.shields.io/pypi/dm/django-admin-top-models.svg?style=flat-square
     :target: https://pypi.python.org/pypi/django-admin-top-models/
     :alt: Downloads
 
-.. image:: https://img.shields.io/pypi/v/django-admin-top-models.svg
+.. image:: https://img.shields.io/pypi/v/django-admin-top-models.svg?style=flat-square
     :target: https://pypi.python.org/pypi/django-admin-top-models/
     :alt: Latest Version
 
-.. image:: https://img.shields.io/travis/KostyaEsmukov/django-admin-top-models.svg
+.. image:: https://img.shields.io/travis/KostyaEsmukov/django-admin-top-models.svg?style=flat-square
     :target: https://travis-ci.org/KostyaEsmukov/django-admin-top-models
     :alt: Travis-ci
 
-.. image:: https://img.shields.io/coveralls/KostyaEsmukov/django-admin-top-models.svg
+.. image:: https://img.shields.io/coveralls/KostyaEsmukov/django-admin-top-models.svg?style=flat-square
     :target: https://coveralls.io/github/KostyaEsmukov/django-admin-top-models
     :alt: Coveralls
 
-.. image:: https://img.shields.io/github/license/KostyaEsmukov/django-admin-top-models.svg
+.. image:: https://img.shields.io/github/license/KostyaEsmukov/django-admin-top-models.svg?style=flat-square
     :target: https://pypi.python.org/pypi/django-admin-top-models/
     :alt: License
 
@@ -39,7 +39,7 @@ Configuration
 ~~~~~~~~~~~~~
 
 
-1. Add `admin_top_models` to `INSTALLED_APPS`::
+1. Add ``admin_top_models`` to ``INSTALLED_APPS``::
 
     INSTALLED_APPS = (
         ...
@@ -48,7 +48,7 @@ Configuration
     )
 
 
-2. Add `admin_top_models.middleware.AdminTopModelsMiddleware` to `MIDDLEWARE_CLASSES`::
+2. Add ``admin_top_models.middleware.AdminTopModelsMiddleware`` to ``MIDDLEWARE_CLASSES``::
 
     MIDDLEWARE_CLASSES = (
         ...
@@ -56,7 +56,7 @@ Configuration
         ...
     )
 
-3. Add `ADMIN_TOP_MODELS_CONFIG` setting to your settings.py::
+3. Add ``ADMIN_TOP_MODELS_CONFIG`` setting to your settings.py::
 
     ADMIN_TOP_MODELS_CONFIG = (
         ('firstapp', ('FirstModel', 'SecondModel')),
