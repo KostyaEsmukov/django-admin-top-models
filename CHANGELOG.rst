@@ -2,7 +2,13 @@
 CHANGELOG
 =========
 
-0.0.2 (unreleased)
+0.0.3 (unreleased)
+------------------
+
+* TBD
+
+
+0.0.2 (2016-07-09)
 ------------------
 
 * Added README
