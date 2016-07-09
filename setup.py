@@ -31,7 +31,7 @@ changelog = open('CHANGELOG.rst').read()
 setup(
         name='django-admin-top-models',
         version=version,
-        description="",  # todo
+        description="Put most used and important models to the top of your Django admin index.",
         long_description=readme + '\n\n' + changelog,
         author='Kostya Esmukov',
         author_email='kostya@esmukov.ru',
