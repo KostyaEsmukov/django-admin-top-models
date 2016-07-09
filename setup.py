@@ -43,7 +43,7 @@ setup(
         install_requires=reqs("requirements.txt"),
         license="LPGL",
         zip_safe=False,
-        keywords='django-modeladmin-reorder',
+        keywords='django modeladmin admin reorder top',
         classifiers=[
             'Development Status :: 4 - Beta',
             'Environment :: Web Environment',
