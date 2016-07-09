@@ -10,9 +10,9 @@ import admin_top_models
 version = admin_top_models.__version__
 
 if sys.argv[-1] == 'publish':
-    os.system('python setup.py sdist upload')
+    os.system('python setup.py sdist upload --sign')
     print("You probably want to also tag the version now:")
-    print("  git tag -a %s -m 'version %s'" % (version, version))
+    print("  git tag -s -a %s" % version)
     print("  git push --tags")
     sys.exit()
 
