@@ -36,8 +36,11 @@ class AdminTopModelsMiddleware(object):
             if settings.INSERT_SPACER:
                 self.insert_spacer_if_not_redundant(app_label, app['models'])
 
+    def count_config_models_present_in_app_models(self, app_label, models):
+        return sum(1 for model in models if model['object_name'] in self.config_app_to_models_indexesdict[app_label])
+
     def insert_spacer_if_not_redundant(self, app_label, models):
-        idx = len(self.config_app_to_models_indexesdict[app_label])
+        idx = self.count_config_models_present_in_app_models(app_label, models)
         if 0 < idx < len(models):
             models.insert(idx, self.spacer_model_dict())
 
