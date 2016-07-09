@@ -26,6 +26,7 @@ django-admin-top-models
 
 Put most used and important models to the top of your Django admin index.
 
+.. image:: https://cloud.githubusercontent.com/assets/2418596/16707176/8b4f1a28-45ce-11e6-991a-01e17d7d5ba8.png
 
 INSTALL
 ~~~~~~~
@@ -59,9 +60,9 @@ Configuration
 3. Add ``ADMIN_TOP_MODELS_CONFIG`` setting to your settings.py::
 
     ADMIN_TOP_MODELS_CONFIG = (
-        ('firstapp', ('FirstModel', 'SecondModel')),
-        ('secondapp', ('AModel', 'BModel', 'CModel')),
-        ('thirdapp',),
+        ('firstapp', ('First', 'Third')),
+        ('secondapp', ('DModel', 'CModel', 'AModel')),
+        ('auth',),
     )
 
 4. Adjust other options (if you need to. These are defaults)::
