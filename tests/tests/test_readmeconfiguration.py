@@ -1,4 +1,5 @@
-from django.core.urlresolvers import reverse, get_urlconf, clear_url_caches
+from django.conf import settings
+from django.core.urlresolvers import reverse, get_urlconf, clear_url_caches, set_urlconf
 from django.contrib.admin import site
 from django.test import modify_settings, override_settings
 
@@ -21,6 +22,16 @@ class WithReadmeConfigurationTests(AssertIsSubsetMixin, SuperuserMixin, BaseMidd
 
     spacer_name = 'jSAHDhjkshkshaduysAHDGusad'
 
+    def reset_urlresolvers_caches(self):
+        # reset urlresolvers cache in order to update
+        # urlpatterns provided by adminsite, to include
+        # the just registered models
+        if get_urlconf() is None:
+            set_urlconf(settings.ROOT_URLCONF)
+
+        reload_importlib_module(get_urlconf())
+        clear_url_caches()
+
     def setUp(self):
         super(WithReadmeConfigurationTests, self).setUp()
 
@@ -28,21 +39,14 @@ class WithReadmeConfigurationTests(AssertIsSubsetMixin, SuperuserMixin, BaseMidd
             for model_name in app_models_module.__all__:
                 site.register(getattr(app_models_module, model_name))
 
-        # reset urlresolvers cache in order to update
-        # urlpatterns provided by adminsite, to include
-        # the just registered models
-        if get_urlconf():
-            reload_importlib_module(get_urlconf())
-        clear_url_caches()
+        self.reset_urlresolvers_caches()
 
     def tearDown(self):
         for app_models_module in self.app_models_modules:
             for model_name in app_models_module.__all__:
                 site.unregister(getattr(app_models_module, model_name))
 
-        if get_urlconf():
-            reload_importlib_module(get_urlconf())
-        clear_url_caches()
+        self.reset_urlresolvers_caches()
 
         super(WithReadmeConfigurationTests, self).tearDown()
 
