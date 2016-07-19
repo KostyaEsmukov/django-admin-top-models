@@ -16,7 +16,7 @@ class AssertIsSubsetMixin(object):
         def inner(subset, dict_or_list):
             if isinstance(dict_or_list, list):
                 assert isinstance(subset, list)
-                assert len(dict_or_list) == len(subset)
+                assert len(dict_or_list) == len(subset), "len(%s) != len(%s)" % (dict_or_list, subset)
 
                 for i in range(len(dict_or_list)):
                     inner(subset[i], dict_or_list[i])
@@ -26,12 +26,12 @@ class AssertIsSubsetMixin(object):
                 for k, _ in subset.items():
                     inner(subset[k], dict_or_list[k])
             else:
-                assert subset == dict_or_list
+                assert subset == dict_or_list, "%s != %s" % (dict_or_list, subset)
 
         try:
             inner(subset, dict_or_list)
         except (AssertionError, KeyError):
-            standardMsg = '%s is not a subset of %s' % (dict_or_list, subset)
+            standardMsg = '%s is not a subset of %s' % (subset, dict_or_list)
             msg = self._formatMessage(msg, standardMsg)
             self.fail(msg)
 
