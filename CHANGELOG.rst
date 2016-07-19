@@ -2,10 +2,11 @@
 CHANGELOG
 =========
 
-0.0.4 (unreleased)
+1.0.0 (2016-07-19)
 ------------------
 
-* TBD
+* Fixed settings being deadly cached
+* Added more tests to reach 100% coverage
 
 
 0.0.3 (2016-07-09)

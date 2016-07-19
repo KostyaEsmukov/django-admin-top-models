@@ -45,7 +45,7 @@ setup(
         zip_safe=False,
         keywords='django modeladmin admin reorder top',
         classifiers=[
-            'Development Status :: 4 - Beta',
+            'Development Status :: 5 - Production/Stable',
             'Environment :: Web Environment',
             'Framework :: Django',
             'License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)',
