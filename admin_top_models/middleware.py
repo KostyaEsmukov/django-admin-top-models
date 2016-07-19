@@ -1,6 +1,5 @@
 from functools import cmp_to_key
 
-from django.utils.functional import cached_property
 from django.core.urlresolvers import resolve
 
 from admin_top_models.utils import list_get_or_default
@@ -16,7 +15,7 @@ class AdminTopModelsMiddleware(object):
 
         try:
             response.context_data['app_list'] = self.get_reordered_app_list(response.context_data['app_list'])
-        except KeyError:
+        except KeyError:  # pragma: no cover
             pass
 
         return response
@@ -80,11 +79,11 @@ class AdminTopModelsMiddleware(object):
         return lambda a, b: self.cmp_top(a['object_name'], b['object_name'],
                                          self.config_app_to_models_indexesdict[app_label])
 
-    @cached_property
+    @property  # not the cached_property, because settings are getting changed in the tests
     def config_apps_indexes_dict(self):
         return {app_label__models[0]: idx for idx, app_label__models in enumerate(settings.CONFIG)}
 
-    @cached_property
+    @property  # not the cached_property, because settings are getting changed in the tests
     def config_app_to_models_indexesdict(self):
         return {app_label__models[0]: ({model: idx for idx, model in enumerate(list_get_or_default(app_label__models, 1, tuple()))})
                 for app_label__models in settings.CONFIG}
@@ -116,7 +115,7 @@ class AdminTopModelsMiddleware(object):
     def cmp_str_asc(a, b):
         # simple ascending comparator for two strings
 
-        if a == b:
+        if a == b:  # pragma: no cover
             return 0
 
         if a < b:
