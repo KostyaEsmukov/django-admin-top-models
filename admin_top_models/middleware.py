@@ -3,7 +3,7 @@ from functools import cmp_to_key
 from django.core.urlresolvers import resolve
 
 from admin_top_models.utils import list_get_or_default
-from . import settings
+from .settings import settings
 
 
 class AdminTopModelsMiddleware(object):
