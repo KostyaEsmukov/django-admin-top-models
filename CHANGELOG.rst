@@ -2,10 +2,10 @@
 CHANGELOG
 =========
 
-1.1.0 (unreleased)
+1.1.0 (2016-08-04)
 ------------------
 
-* TBD
+* Fixed setuptools complaining about missing django
 
 1.0.0 (2016-07-19)
 ------------------
